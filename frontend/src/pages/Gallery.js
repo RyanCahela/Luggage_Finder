@@ -5,7 +5,7 @@ function Gallery() {
   return (
     <>
       <Header />
-      <h1>GAllery</h1>
+      
     </>
   );
 }

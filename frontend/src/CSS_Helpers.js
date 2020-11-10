@@ -15,12 +15,12 @@ const colors = {
   `,
 };
 
-const layoutHelpers = {
-  CenterHorizontally: css`
+const layout = {
+  centerHorizontally: css`
     inline-size: 80%;
     block-size: 100%;
     margin: 0 auto;
   `,
 };
 
-export { layoutHelpers, colors };
+export { layout, colors };

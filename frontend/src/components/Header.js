@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { layoutHelpers, colors } from "../CSS_Helpers";
+import { layout, colors } from "../CSS_Helpers";
 
 const StyledHeader = styled.header`
   ${colors.primaryBgLight};
 `;
 
 const Layout = styled.div`
-  ${layoutHelpers.CenterHorizontally}
+  ${layout.centerHorizontally}
   display: flex;
   h1 {
     margin-right: auto;
