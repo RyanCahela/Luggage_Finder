@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Gallery from "./pages/Gallery";
 import AddLuggage from "./pages/AddLuggage";
 
@@ -8,7 +8,7 @@ function App() {
     <>
       <Switch>
         <Route exact path="/">
-          <Gallery />
+          <Redirect to="/gallery" />
         </Route>
         <Route path="/gallery">
           <Gallery />
