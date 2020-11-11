@@ -1,7 +1,12 @@
-import React, from "react";
+import React, { useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Gallery from "./pages/Gallery";
 import AddLuggage from "./pages/AddLuggage";
+import DataStore from "./DataStore.js";
+
+function addLuggageToDataStore(newLuggage = {}) {
+  DataStore.add(newLuggage);
+}
 
 function App() {
   return (
@@ -11,10 +16,10 @@ function App() {
           <Redirect to="/gallery" />
         </Route>
         <Route path="/gallery">
-          <Gallery />
+          <Gallery dataStore={DataStore} />
         </Route>
         <Route path="/add">
-          <AddLuggage />
+          <AddLuggage addLuggageToDataStore={addLuggageToDataStore} />
         </Route>
       </Switch>
     </>
