@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { layout, colors } from "../CSS_Helpers";
+import { layout, colors, scale } from "../CSS_Helpers";
 
 const StyledHeader = styled.header`
   ${colors.primaryBgLight};
