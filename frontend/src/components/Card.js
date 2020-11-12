@@ -8,10 +8,12 @@ const StyledCard = styled.li`
   padding: 10px;
 `;
 
-function Card(props) {
+function Card({ imageUrl, dateFound, description }) {
   return (
     <StyledCard>
-      <p>{props.name}</p>
+      <p>{imageUrl}</p>
+      <p>{dateFound}</p>
+      <p>{description}</p>
     </StyledCard>
   );
 }

@@ -32,6 +32,7 @@ function AddLuggage({ addLuggageToDataStore }) {
   const DD = String(date.getDate()).padStart(2, "0");
 
   const handleAddLuggage = (e) => {
+    e.preventDefault();
     if (!dateFound) return console.error("date is required");
     if (!imageUrl) return console.error("imageUrl is required");
     if (!description) return console.error("description is required");
@@ -65,8 +66,8 @@ function AddLuggage({ addLuggageToDataStore }) {
               type="date"
               id="date_found"
               name="date found"
-              defaultValue=""
               value={dateFound}
+              onChange={(e) => setDateFound(e.target.value)}
             />
             <button
               onClick={(e) => {
@@ -84,7 +85,6 @@ function AddLuggage({ addLuggageToDataStore }) {
             name="description"
             rows="4"
             cols="50"
-            defaultValue=""
             value={description}
             onChange={(e) => setDescription(e.target.value)}></textarea>
 

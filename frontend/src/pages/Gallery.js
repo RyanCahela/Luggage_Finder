@@ -18,18 +18,7 @@ const StyledGallery = styled.main`
   }
 `;
 
-const textArr = [
-  "Ryan",
-  "Brandon",
-  "Patricia",
-  "Andy",
-  "foo",
-  "bar",
-  "bax",
-  "fub",
-];
-
-function Gallery() {
+function Gallery({ dataStore }) {
   return (
     <>
       <Header />
@@ -37,8 +26,8 @@ function Gallery() {
         <section>
           <h2>Gallery</h2>
           <ul>
-            {textArr.map((text) => (
-              <Card name={text} />
+            {dataStore.data.map((luggageObj) => (
+              <Card {...luggageObj} />
             ))}
           </ul>
         </section>

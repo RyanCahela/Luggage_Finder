@@ -5,6 +5,7 @@ import AddLuggage from "./pages/AddLuggage";
 import DataStore from "./DataStore.js";
 
 function addLuggageToDataStore(newLuggage = {}) {
+  console.log(newLuggage);
   DataStore.add(newLuggage);
 }
 
