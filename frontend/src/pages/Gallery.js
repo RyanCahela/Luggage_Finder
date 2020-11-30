@@ -21,7 +21,6 @@ const StyledGallery = styled.main`
 function Gallery({ dataStore }) {
   return (
     <>
-      <Header />
       <StyledGallery>
         <section>
           <h2>Gallery</h2>
@@ -32,7 +31,6 @@ function Gallery({ dataStore }) {
           </ul>
         </section>
       </StyledGallery>
-      <Footer />
     </>
   );
 }

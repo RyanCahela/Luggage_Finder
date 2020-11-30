@@ -45,7 +45,6 @@ function AddLuggage({ addLuggageToDataStore }) {
 
   return (
     <>
-      <Header />
       <StyledAddLuggage>
         <h1>Add Luggage</h1>
         <StyledForm>
@@ -93,7 +92,6 @@ function AddLuggage({ addLuggageToDataStore }) {
           </button>
         </StyledForm>
       </StyledAddLuggage>
-      <Footer />
     </>
   );
 }
