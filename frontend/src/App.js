@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Gallery from "./pages/Gallery";
 import Header from "./components/Header";
@@ -14,15 +14,13 @@ function addLuggageToDataStore(newLuggage = {}) {
 }
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
   return (
     <>
       <Header />
       <Switch>
         <Route exact path="/">
           <Auth />
-        </Route>
-        <Route path="/signedIn">
-          <SignedIn />
         </Route>
         <Route path="/gallery">
           <Gallery dataStore={DataStore} />

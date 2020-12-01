@@ -32,6 +32,7 @@ function Header() {
       <Layout>
         <h1>Luggage Finder</h1>
         <nav>
+          <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/add">Add</StyledLink>
           <StyledLink to="/gallery">Gallery</StyledLink>
         </nav>
