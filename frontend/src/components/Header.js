@@ -1,43 +1,39 @@
 import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { layout, colors, scale } from "../CSS_Helpers";
+import { Link as RouterLink } from "react-router-dom";
+import AppBar from "@material-ui/core/AppBar";
+import Container from "@material-ui/core/Container";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 
-const StyledHeader = styled.header`
-  ${colors.primaryBgLight};
-`;
-
-const Layout = styled.div`
-  ${layout.centerHorizontally}
-  display: flex;
-  h1 {
-    margin-right: auto;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 20%;
-  }
-`;
-
-const StyledLink = styled(Link)`
-  ${colors.primaryDark}
-  text-decoration: none;
-`;
+const useStyles = makeStyles((theme) => ({
+  offset: theme.mixins.toolbar,
+}));
 
 function Header() {
+  const classes = useStyles();
   return (
-    <StyledHeader>
-      <Layout>
-        <h1>Luggage Finder</h1>
-        <nav>
-          <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/add">Add</StyledLink>
-          <StyledLink to="/gallery">Gallery</StyledLink>
-        </nav>
-      </Layout>
-    </StyledHeader>
+    <>
+      <AppBar>
+        <Grid container direction="row">
+          <Grid item>
+            <h1>Header</h1>
+          </Grid>
+          <Grid item>
+            <Link color="inherit" component={RouterLink} to="/gallery">
+              Gallery
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link color="inherit" component={RouterLink} to="/add">
+              Add Luggage
+            </Link>
+          </Grid>
+        </Grid>
+      </AppBar>
+      <div className={classes.offset}></div>
+    </>
   );
 }
 

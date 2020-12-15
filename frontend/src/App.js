@@ -5,12 +5,11 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AddLuggage from "./pages/AddLuggage";
 import SignedIn from "./pages/SignedIn";
-import DataStore from "./DataStore.js";
 import Auth from "./pages/Auth";
+import Grid from "@material-ui/core/Grid";
 
 function addLuggageToDataStore(newLuggage = {}) {
   console.log(newLuggage);
-  DataStore.add(newLuggage);
 }
 
 function App() {
@@ -20,13 +19,19 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/">
-          <Auth />
+          <Grid item>
+            <Auth />
+          </Grid>
         </Route>
         <Route path="/gallery">
-          <Gallery dataStore={DataStore} />
+          <Grid item xs={12}>
+            <Gallery />
+          </Grid>
         </Route>
         <Route path="/add">
-          <AddLuggage addLuggageToDataStore={addLuggageToDataStore} />
+          <Grid item xs={12}>
+            <AddLuggage addLuggageToDataStore={addLuggageToDataStore} />
+          </Grid>
         </Route>
       </Switch>
       <Footer />
