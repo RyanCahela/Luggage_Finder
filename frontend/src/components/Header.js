@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
+
 }));
 
 function Header() {
@@ -16,11 +17,11 @@ function Header() {
   return (
     <>
       <AppBar>
-        <Grid container direction="row">
+        <Grid container direction="row" alignItems="center">
           <Grid item>
             <h1>Header</h1>
           </Grid>
-          <Grid item>
+          <Grid item className="">
             <Link color="inherit" component={RouterLink} to="/gallery">
               Gallery
             </Link>
