@@ -44,6 +44,9 @@ function App() {
             <AddLuggage />
           </Grid>
         </Route>
+        <Route path="/dialog">
+          <Redirect to="/"></Redirect>
+        </Route>
       </Switch>
       <Signup
         dialogValues={{ isShowDialog, dialogBackground }}

@@ -3,6 +3,7 @@ import Dialog from "@material-ui/core/Dialog";
 import { useAuth } from "../../contexts/AuthContext";
 import { unstable_createMuiStrictModeTheme } from "@material-ui/core";
 import { useState } from "react";
+import { SettingsBackupRestoreRounded } from "@material-ui/icons";
 
 function Signup({ dialogValues, dialogFunctions }) {
   const { setIsShowDialog } = dialogFunctions;
@@ -13,15 +14,24 @@ function Signup({ dialogValues, dialogFunctions }) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleClose = () => {
     setIsShowDialog(false);
     history.push(dialogBackground.pathname);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    signupAsync(email, password).then((cred) => console.log("cred", cred));
+    try {
+      const cred = await signupAsync(email, password);
+      if (cred) setEmail("");
+      setPassword("");
+      handleClose();
+    } catch (err) {
+      console.error(err);
+      setError(err);
+    }
   };
 
   const signupForm = (
@@ -37,6 +47,7 @@ function Signup({ dialogValues, dialogFunctions }) {
         value={password}
         onChange={(e) => setPassword(e.target.value)}></input>
       <button type="submit">Signup</button>
+      {error ? <div style={{ color: "red" }}>{error.message}</div> : null}
     </form>
   );
 
