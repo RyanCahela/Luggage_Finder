@@ -1,9 +1,14 @@
-import { useHistory, useLocation } from "react-router-dom";
-import Dialog from "@material-ui/core/Dialog";
-import { useAuth } from "../../contexts/AuthContext";
-import { unstable_createMuiStrictModeTheme } from "@material-ui/core";
 import { useState } from "react";
-import { SettingsBackupRestoreRounded } from "@material-ui/icons";
+import { useHistory, useLocation } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Button,
+} from "@material-ui/core";
 
 function Signup({ dialogValues, dialogFunctions }) {
   const { setIsShowDialog } = dialogFunctions;
@@ -18,6 +23,7 @@ function Signup({ dialogValues, dialogFunctions }) {
 
   const handleClose = () => {
     setIsShowDialog(false);
+    sessionStorage.removeItem("dialogBackground");
     history.push(dialogBackground.pathname);
   };
 
@@ -35,25 +41,40 @@ function Signup({ dialogValues, dialogFunctions }) {
   };
 
   const signupForm = (
-    <form onSubmit={handleSubmit}>
-      <label>Email</label>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}></input>
-      <label>Password</label>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}></input>
-      <button type="submit">Signup</button>
-      {error ? <div style={{ color: "red" }}>{error.message}</div> : null}
-    </form>
+    <>
+      <DialogTitle>Create Account</DialogTitle>
+      <DialogContent></DialogContent>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          type="email"
+          label="Email Address"
+          variant="outlined"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField
+          type="password"
+          label="Password"
+          variant="outlined"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <DialogActions></DialogActions>
+        <Button type="submit" color="primary">
+          Signup
+        </Button>
+        <Button color="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        {error ? <div style={{ color: "red" }}>{error.message}</div> : null}
+      </form>
+    </>
   );
 
   return (
     <Dialog open={isShowDialog} onClose={handleClose}>
-      <h3>Signup</h3>
+      <DialogTitle>Signup</DialogTitle>
+      <DialogContent></DialogContent>
       {signupForm}
     </Dialog>
   );

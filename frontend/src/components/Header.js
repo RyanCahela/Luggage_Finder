@@ -16,6 +16,13 @@ function Header({ dialogFunctions }) {
   const { setDialogBackground, setIsShowDialog } = dialogFunctions;
   const location = useLocation();
   const classes = useStyles();
+
+  const handleOpenModal = () => {
+    setDialogBackground(location);
+    sessionStorage.setItem("dialogBackground", location.pathname);
+    setIsShowDialog(true);
+  };
+
   return (
     <>
       <AppBar>
@@ -38,10 +45,7 @@ function Header({ dialogFunctions }) {
               color="inherit"
               component={RouterLink}
               to={"/dialog/signup"}
-              onClick={() => {
-                setDialogBackground(location);
-                setIsShowDialog(true);
-              }}>
+              onClick={handleOpenModal}>
               Sign Up
             </Link>
           </Grid>

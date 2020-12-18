@@ -19,11 +19,22 @@ function App() {
   const location = useLocation();
 
   //to display previous page behind popup dialogs
+  //TODO : Refactor to just store the pathname and not the entire location obj in dialogBackground
   const [dialogBackground, setDialogBackground] = useState(location);
   const [isShowDialog, setIsShowDialog] = useState(false);
 
-  console.log("App.js location", location);
-  console.log("isShowDialog", isShowDialog);
+  if (sessionStorage.getItem("dialogBackground")) {
+    /*****
+      when dialog is open and page refreshed, 
+      closes modal and sets location to dialog background page
+    *****/
+    console.log(
+      "session storage pathname",
+      sessionStorage.getItem("dialogBackground")
+    );
+    history.push(sessionStorage.getItem("dialogBackground") || "/");
+    sessionStorage.removeItem("dialogBackground");
+  }
 
   return (
     <>
@@ -43,9 +54,6 @@ function App() {
           <Grid item xs={12}>
             <AddLuggage />
           </Grid>
-        </Route>
-        <Route path="/dialog">
-          <Redirect to="/"></Redirect>
         </Route>
       </Switch>
       <Signup
