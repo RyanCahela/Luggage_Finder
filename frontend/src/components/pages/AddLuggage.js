@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function AddLuggage({ addLuggageToDataStore }) {
+function AddLuggage() {
   return <h1>Add Luggage</h1>;
 }
 

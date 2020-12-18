@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
@@ -8,11 +8,13 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  //stops AppBar from rendering over sibling elements
   offset: theme.mixins.toolbar,
-
 }));
 
-function Header() {
+function Header({ dialogFunctions }) {
+  const { setDialogBackground, setIsShowDialog } = dialogFunctions;
+  const location = useLocation();
   const classes = useStyles();
   return (
     <>
@@ -31,8 +33,22 @@ function Header() {
               Add Luggage
             </Link>
           </Grid>
+          <Grid item>
+            <Link
+              color="inherit"
+              component={RouterLink}
+              to={"/dialog/signup"}
+              onClick={() => {
+                setDialogBackground(location);
+                setIsShowDialog(true);
+              }}>
+              Sign Up
+            </Link>
+          </Grid>
         </Grid>
       </AppBar>
+
+      {/* stops AppBar (position: fixed) from rendering on top of sibling elements */}
       <div className={classes.offset}></div>
     </>
   );
