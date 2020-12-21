@@ -1,13 +1,27 @@
 import { useState } from "react";
+import styled from "styled-components";
+
+const Form = styled.form`
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+`;
 
 const CreateAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("handleSubmit fired!");
+  };
 
   return (
     <>
       <h1>Create Account</h1>
-      <form>
+      <Form onSubmit={handleSubmit}>
         <label for="email_input">Email:</label>
         <input
           id="email_input"
@@ -26,10 +40,12 @@ const CreateAccount = () => {
         <input
           id="confirm_password"
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
         />
-      </form>
+        <button type="submit">Create Account</button>
+      </Form>
+      {error ? <div style={{ color: "red" }}>{error}</div> : null}
     </>
   );
 };
