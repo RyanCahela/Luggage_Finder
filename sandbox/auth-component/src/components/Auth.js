@@ -6,7 +6,9 @@ const Auth = () => {
   return (
     <div>
       <Login />
+      <hr />
       <Logout />
+      <hr />
       <CreateAccount />
     </div>
   );
