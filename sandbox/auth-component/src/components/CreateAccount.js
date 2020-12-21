@@ -22,23 +22,23 @@ const CreateAccount = () => {
     <>
       <h1>Create Account</h1>
       <Form onSubmit={handleSubmit}>
-        <label for="email_input">Email:</label>
+        <label for="create_account_email">Email:</label>
         <input
-          id="email_input"
+          id="create_account_email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label for="password_input">Password:</label>
+        <label for="create_account_password">Password:</label>
         <input
-          id="password_input"
+          id="create_account_password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <label for="confirm_password">Confirm Password</label>
+        <label for="create_account_confirm_password">Confirm Password</label>
         <input
-          id="confirm_password"
+          id="create_account_confirm_password"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
