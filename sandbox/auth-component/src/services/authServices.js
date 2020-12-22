@@ -20,7 +20,7 @@ const authServices = {
   logout: async () => {
     try {
       auth.signOut();
-    } catch {
+    } catch (err) {
       console.error(err);
     }
   },

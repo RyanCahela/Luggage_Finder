@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+import Auth from "src/services/authServices";
+
 const Form = styled.form`
   align-items: flex-start;
   display: flex;
@@ -16,6 +18,7 @@ const CreateAccount = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("handleSubmit fired!");
+    Auth.createAccount(email, password);
   };
 
   return (
