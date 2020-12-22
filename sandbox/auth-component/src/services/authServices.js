@@ -1,28 +1,19 @@
-import { auth } from "src/services/firebase";
+import { firebaseAuth } from "src/services/firebase";
+
+console.log("firebaseAuth", firebaseAuth);
 
 const authServices = {
-  createAccount: async (email, password) => {
-    try {
-      const user = await auth.createUserWithEmailAndPassword(email, password);
-      return user;
-    } catch (err) {
-      console.error(err);
-    }
+  createAccount: (email, password) => {
+    //triggers firebaseAuth.onAuthStateChaged() in AuthContext.js
+    return firebaseAuth.createUserWithEmailAndPassword(email, password);
   },
-  login: async (email, password) => {
-    try {
-      const user = await auth.signInUserWithEmailAndPassword(email, password);
-      return user;
-    } catch (err) {
-      console.error(err);
-    }
+  login: (email, password) => {
+    //triggers firebaseAuth.onAuthStateChaged() in AuthContext.js
+    return firebaseAuth.signInWithEmailAndPassword(email, password);
   },
-  logout: async () => {
-    try {
-      auth.signOut();
-    } catch (err) {
-      console.error(err);
-    }
+  logout: () => {
+    //triggers firebaseAuth.onAuthStateChaged() in AuthContext.js
+    return firebaseAuth.signOut();
   },
 };
 
