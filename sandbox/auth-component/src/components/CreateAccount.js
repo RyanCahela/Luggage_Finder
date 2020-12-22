@@ -1,9 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import Auth from "src/services/authServices";
-import { useAuth } from "src/contexts/AuthContext";
-
+import authServices from "src/services/authServices";
 const Form = styled.form`
   align-items: flex-start;
   display: flex;
@@ -16,17 +14,24 @@ const CreateAccount = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
+  const resetForm = () => {
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("handleSubmit fired!");
-    Auth.createAccount(email, password)
+    authServices
+      .createAccount(email, password)
       .then(() => {
-        //reset form
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
+        resetForm();
       })
-      .catch((err) => setError(err.message ? err.message : err));
+      .catch((err) => {
+        setError(err.message ? err.message : err);
+        resetForm();
+      });
   };
 
   return (
